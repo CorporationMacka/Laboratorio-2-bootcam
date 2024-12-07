@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario HTML</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    
+    
+</head>
+
+<body>
+
+    <script>
+        function guardarDatos() {
+
+
+            const nombre_tarea = document.getElementById("nombre_tarea").value;
+            const descripcion = document.getElementById("descripcion").value;
+            const estado_tarea = document.getElementById("estado_tarea").value;
+            localStorage.setItem(nombre_tarea, nombre_tarea);
+            localStorage.setItem("d" + nombre_tarea, descripcion);
+            localStorage.setItem("e" + nombre_tarea, estado_tarea)
+
+
+
+        }
+
+        function consultarTarea() {
+
+            const nombre_tarea = document.getElementById("nombre_tarea").value;
+            const descripcion = localStorage.getItem("d" + nombre_tarea);
+            const estado_tarea = localStorage.getItem("e" + nombre_tarea);
+            document.getElementById("descripcion").value = descripcion;
+            document.getElementById("estado_tarea").value = estado_tarea;
+
+
+
+        }
+
+        function actualizarTarea() {
+
+            const nombre_tarea = document.getElementById("nombre_tarea").value;
+            const descripcion = document.getElementById("descripcion").value;
+            const estado_tarea = document.getElementById("estado_tarea").value;
+            localStorage.setItem(nombre_tarea, nombre_tarea);
+            localStorage.setItem("d" + nombre_tarea, descripcion);
+            localStorage.setItem("e" + nombre_tarea, estado_tarea)
+
+        }
+
+        function eliminarTarea() {
+            const nombre_tarea = document.getElementById("nombre_tarea").value ;
+            localStorage.removeItem(nombre_tarea);
+            localStorage.removeItem("d"+nombre_tarea);
+            localStorage.removeItem("e"+nombre_tarea);
+        }
+
+
+
+
+    </script>
+
+
+
+    <form onsubmit="guardarDatos(); return false">
+        <fieldset>
+            <legend>Registro de Tareas</legend>
+            <h1>Formulario de Tareas</h1>
+            <hr />
+            <label for="nombre_tarea">Nombre de tarea</label><br />
+            <input type="text" id="nombre_tarea" name="nombre_tarea" placeholder="Escribe tu Tarea"
+                required="true"><br />
+            <label for="descripcion">Descripcion de tarea</label><br />
+            <input type="text" id="descripcion" name="descripcion" placeholder="Escribe la Descripcion"
+                required="true"><br />
+            <label for="estado_tarea">Estado de Tarea</label><br />
+            <input type="text" id="estado_tarea" name="estado_tarea" placeholder="Escribe tu Estado" required="true">
+            <br><br>
+
+            <input type="button" value="Enviar" onclick="guardarDatos()" />
+            <input type="button" onclick="consultarTarea()" value="Consultar" />
+            <input type="button" onclick="actualizarTarea()" value="Actualizar" />
+            <input type="button" onclick="eliminarTarea()" value="Eliminar" />
+
+
+
+        </fieldset>
+
+    </form>
+
+</body>
+
+</html>
